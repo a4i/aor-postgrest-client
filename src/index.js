@@ -29,7 +29,7 @@ export default (apiUrl, httpClient = fetchJson) => {
     const convertFilters = (filters) => {
         let rest = {};
 
-        Object.keys(filters).map(function (key) {
+        Object.keys(filters).forEach(function (key) {
             switch (typeof filters[key]) {
                 case 'string':
                     rest[key]='ilike.*' + filters[key].replace(/:/,'') + '*';
