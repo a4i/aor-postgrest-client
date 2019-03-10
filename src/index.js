@@ -160,8 +160,6 @@ export default (apiUrl, httpClient = fetchJson) => {
                 data: json.map(x => x),
                 total: parseInt(headers.get('content-range').split('/').pop(), 10) || maxInPage,
             };
-        case CREATE:
-            return { data:params.data, id: json.id };
         case UPDATE:
             return { data:params.data, id: params.id };
         case DELETE:
@@ -170,6 +168,7 @@ export default (apiUrl, httpClient = fetchJson) => {
             return { data:[],id: params.id };
         case GET_ONE:
             return { data:json,id: params.id };
+        case CREATE:
         default:
             return { data: json };
         }
